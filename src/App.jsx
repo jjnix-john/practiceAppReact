@@ -8,54 +8,100 @@ function App() {
 
   return (
     <>
-      {
+    <div className="BoxedApp">
+      <h1>Count Button</h1> 
+      <button disabled={count >= 6} onClick={() => setCount((count) => count + 1)}>
+        Increment
+        
+      </button>
+      <p>Count is: {count}</p>
+    </div>
+      
+    
+    <div className="BoxedApp">
+      <h1>Tic Tac Toe Game</h1>
+      <Board />
+    </div>
+    
+    </> 
+  )
+}
+//tic tac toe game 3x3 grid
+function Square({ value, onSquareClick }) {
+  return (
+    <button className="square" onClick={onSquareClick}>
+      {value}
+    </button>
+  )
+}
 
-        <>
-          <div className="task-manager">
-            <h2>Task Manager</h2>
-            <p>Welcome to the Task Manager Application!</p>
-            <div className="task-input">
-              <input type="text" placeholder="Enter a new task" />
-              <button>Add Task</button>
-            </div>
+function Board() {
+  const [squares, setSquares] = useState(Array(9).fill(null))
+  const [xIsNext, setXIsNext] = useState(true)
 
-            <div className="task-list">
-              <h3>Your Tasks:</h3>
-              <ul>
-                <li>Sample Task 1</li>
-                <li>Sample Task 2</li>
-              </ul>
-            </div>
-          </div>
-          
-          <div className="counter-app">
-            <h1>Vite + React</h1>
-            <div className="logos">
-              <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-                <img src={viteLogo} className="logo" alt="Vite logo" />
-              </a>
-              <a href="https://react.dev" target="_blank" rel="noreferrer">
-                <img src={reactLogo} className="logo react" alt="React logo" />
-              </a>
-            </div>
-            <h2>Count is: {count}</h2>
-            <div className="card">
-              <button onClick={() => setCount((count) => count + 1)}>
+  function handleClick(i) {
+    if (squares[i] || calculateWinner(squares)) {
+      return
+    }
+    const nextSquares = squares.slice()
+    if (xIsNext) {
+      nextSquares[i] = 'X'
+    } else {
+      nextSquares[i] = 'O'
+    }
+    setSquares(nextSquares)
+    setXIsNext(!xIsNext)
+  }
 
-              </button>
-              <button onClick={() => setCount((count) => count - 1)}>
-
-              </button>
-            </div>
-            <p className="read-the-docs">
-              Click on the Vite and React logos to learn more
-            </p>
-          </div>
-          </>
-
-      }
+  const winner = calculateWinner(squares)
+  let status
+  if (winner) {
+    status = 'Winner: ' + winner
+  } else {
+    status = 'Next player: ' + (xIsNext ? 'X' : 'O')
+  }   
+  return (
+    <>
+      <div className="status">{status}</div>
+      <div className="board-row">
+        <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
+        <Square value={squares[1]} onSquareClick={() => handleClick(1)} />
+        <Square value={squares[2]} onSquareClick={() => handleClick(2)} />
+      </div>
+      <div className="board-row">
+        <Square value={squares[3]} onSquareClick={() => handleClick(3)} />
+        <Square value={squares[4]} onSquareClick={() => handleClick(4)} />
+        <Square value={squares[5]} onSquareClick={() => handleClick(5)} />
+      </div>
+      <div className="board-row">
+        <Square value={squares[6]} onSquareClick={() => handleClick(6)} />
+        <Square value={squares[7]} onSquareClick={() => handleClick(7)} />
+        <Square value={squares[8]} onSquareClick={() => handleClick(8)} />
+      </div>
     </>
   )
 }
+
+function calculateWinner(squares) {
+  const lines = [
+    [0, 1, 2],    
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
+  ]
+  for (let i = 0; i < lines.length; i++) {
+    const [a, b, c] = lines[i]
+    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+      return squares[a]
+    }
+  }
+  return null
+}
+
+
 
 export default App
