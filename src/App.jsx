@@ -28,6 +28,10 @@ function App() {
       <TodoApp />
     </div>
     
+    <div>
+      <h1>Adjustable Sized Button</h1>
+      <AdjustableSizedButton />
+    </div>
     </> 
   )
 }
@@ -137,6 +141,25 @@ function TodoApp() {
   )
 }
 
+function AdjustableSizedButton() {
+  const [size, setSize] = useState(100)
+  
+  function handleIncreaseSize() {
+    setSize(size + 10)
+  }
+  function handleDecreaseSize()
+  {
+    setSize(size - 10)
+  }
 
+  return (
+    <><button style={{ width: size, height: size }} onClick={handleIncreaseSize}>
+      Click to increase size
+    </button><button onClick={handleDecreaseSize}>
+        Click to decrease size
+      </button></>
+
+  )
+} 
 
 export default App
