@@ -8,6 +8,12 @@ function App() {
 
   return (
     <>
+    <div>
+      <h1>React Logo</h1>
+      <img src={reactLogo} className="logo react" alt="React logo" />
+    </div>
+    
+
     <div className="BoxedApp">
       <h1>Count Button</h1> 
       <button disabled={count >= 6} onClick={() => setCount((count) => count + 1)}>
@@ -32,6 +38,9 @@ function App() {
       <h1>Adjustable Sized Button</h1>
       <AdjustableSizedButton />
     </div>
+
+    
+    
     </> 
   )
 }
@@ -151,6 +160,20 @@ function AdjustableSizedButton() {
   {
     setSize(size - 10)
   }
+  
+  function radiobuttonForNumber(number) {
+    return (
+      <label>
+        <input
+          type="radio"
+          value={number}
+          checked={size === number}
+          onChange={() => setSize(number)}
+        />
+        {number}px
+      </label>
+    )
+  } 
 
   return (
     <><button style={{ width: size, height: size }} onClick={handleIncreaseSize}>
