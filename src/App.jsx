@@ -39,7 +39,11 @@ function App() {
       <AdjustableSizedButton />
     </div>
 
-    
+    <div>
+      <h1>Checkbox for Todo</h1>
+      {checkboxForTodo("Learn React")}
+      {checkboxForTodo("Build a Todo App")}
+    </div>
     
     </> 
   )
@@ -184,5 +188,14 @@ function AdjustableSizedButton() {
 
   )
 } 
+
+function checkboxForTodo(todo) {
+  return (
+    <label>
+      <input type="checkbox" />
+      {todo}
+    </label>
+  )
+}
 
 export default App
