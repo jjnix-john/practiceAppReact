@@ -59,8 +59,8 @@ body {
   display: table;
 }
 .square {
-  background: #fff;
-  border: 1px solid #999;
+  background: #a56666;
+  border: 2px solid #999;
   float: left;
   font-size: 24px;
   font-weight: bold;
@@ -70,7 +70,19 @@ body {
   margin-top: -1px;
   padding: 0;
   text-align: center;
-  width: 34px;
+  width: 54px;
+  height: 54px;
+  
+}
+
+.square:disabled {
+  background: #ddd;
+  color: #999;
+}
+
+.status {
+  margin-bottom: 10px;
+  font-weight: bold;
 }
 .square:focus {
   outline: none;
@@ -87,4 +99,60 @@ body {
 ol, ul {
   padding-left: 30px;
 }
-/* End of Tic Tac Toe styles */
+
+.counterTitle {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+.counterValue {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+.counterButton {
+  font-size: 18px;
+  padding: 10px 20px;
+  margin: 5px;
+  background-color: rgb(134, 231, 235);
+  cursor: pointer;
+}
+
+.todoApp {
+  max-width: 400px;
+  margin: 80px auto;
+  padding: 100px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  text-align: center;
+  align-items: center;
+}
+.todoApp h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  
+}
+.todoApp input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.todoApp ul {
+  list-style-type: none;
+  padding: 0;
+}
+.todoApp li {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+.todoApp li:last-child {
+  border-bottom: none;
+} 
+
+.increasesize {
+  font-size: 24px;
+}
+.decreasesize {
+  font-size: 24px;
+}
+

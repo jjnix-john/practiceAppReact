@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import  Counter from './Counter.jsx'
+
 
 function App() {
   const [count, setCount] = useState(0)
@@ -43,6 +44,11 @@ function App() {
       <h1>Checkbox for Todo</h1>
       {checkboxForTodo("Learn React")}
       {checkboxForTodo("Build a Todo App")}
+    </div>
+
+    
+    <div>
+      <Counter />
     </div>
     
     </> 
@@ -136,7 +142,7 @@ function TodoApp() {
   }
 
   return (
-    <div>
+    <div className='todoApp'>
       <h1>Todo List</h1>
       <input
         type="text"
@@ -165,24 +171,13 @@ function AdjustableSizedButton() {
     setSize(size - 10)
   }
   
-  function radiobuttonForNumber(number) {
-    return (
-      <label>
-        <input
-          type="radio"
-          value={number}
-          checked={size === number}
-          onChange={() => setSize(number)}
-        />
-        {number}px
-      </label>
-    )
-  } 
 
   return (
-    <><button style={{ width: size, height: size }} onClick={handleIncreaseSize}>
+    <>
+    <h1 className='adjustable-size-title'>Boom</h1>
+    <button onClick={handleIncreaseSize}>
       Click to increase size
-    </button><button onClick={handleDecreaseSize}>
+    </button><button className='decreasesize' onClick={handleDecreaseSize}>
         Click to decrease size
       </button></>
 
@@ -197,5 +192,6 @@ function checkboxForTodo(todo) {
     </label>
   )
 }
+
 
 export default App
