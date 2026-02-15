@@ -3,12 +3,17 @@ import reactLogo from './assets/react.svg'
 import './App.css'
 import  Counter from './Counter.jsx'
 
+import TaskManager from './TaskManager.jsx'
+
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
+
+    <div><TaskManager /></div>
+
     <div>
       <h1>React Logo</h1>
       <img src={reactLogo} className="logo react" alt="React logo" />
@@ -192,6 +197,8 @@ function checkboxForTodo(todo) {
     </label>
   )
 }
+
+
 
 
 export default App
