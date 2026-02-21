@@ -2,7 +2,7 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
 import  Counter from './Counter.jsx'
-
+import Calculator from './Calculator.jsx'
 import TaskManager from './TaskManager.jsx'
 
 
@@ -55,6 +55,11 @@ function App() {
     <div>
       <Counter />
     </div>
+
+    <div>
+      <Calculator/>
+    </div>
+    
     
     </> 
   )
