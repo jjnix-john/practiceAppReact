@@ -156,3 +156,49 @@ ol, ul {
   font-size: 24px;
 }
 
+.coin-container {
+  text-align: center;
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  width: 300px;
+  margin: 50px auto;
+}
+
+.coin {
+  width: 120px;
+  height: 120px;
+  margin: 20px auto;
+  border-radius: 50%;
+  background: gold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  font-weight: bold;
+  transition: transform 1s;
+}
+
+.flip {
+  transform: rotateY(1080deg);
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  background: #2a5298;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #1e3c72;
+}
+
+button:disabled {
+  background: gray;
+  cursor: not-allowed;
+}
