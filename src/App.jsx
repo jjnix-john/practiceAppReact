@@ -5,6 +5,7 @@ import  Counter from './Counter.jsx'
 import Calculator from './Calculator.jsx'
 import TaskManager from './TaskManager.jsx'
 import CoinFlipper from './Coinflipper.jsx'
+import RollingDice from './RollingDice.jsx'
 
 
 function App() {
@@ -64,6 +65,9 @@ function App() {
     <div>
       <CoinFlipper />
     </div>
+
+    <div><RollingDice /></div>
+
     </> 
   )
 }
