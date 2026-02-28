@@ -6,6 +6,7 @@ import Calculator from './Calculator.jsx'
 import TaskManager from './TaskManager.jsx'
 import CoinFlipper from './Coinflipper.jsx'
 import RollingDice from './RollingDice.jsx'
+import QRCodeGenerator from './QRCodeGenerator.jsx'
 
 
 function App() {
@@ -68,7 +69,11 @@ function App() {
 
     <div><RollingDice /></div>
 
+    <div><QRCodeGenerator /></div>
+
     </> 
+
+
   )
 }
 //tic tac toe game 3x3 grid
