@@ -7,6 +7,7 @@ import TaskManager from './TaskManager.jsx'
 import CoinFlipper from './Coinflipper.jsx'
 import RollingDice from './RollingDice.jsx'
 import QRCodeGenerator from './QRCodeGenerator.jsx'
+import RandomQuote from './RandomQoute.jsx'
 
 
 function App() {
@@ -71,6 +72,7 @@ function App() {
 
     <div><QRCodeGenerator /></div>
 
+    <div><RandomQuote /></div>
     </> 
 
 
