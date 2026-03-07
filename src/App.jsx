@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import { BrowserRouter, Routes, Route, Link, Outlet, Navigate } from 'react-router-dom'
 import './App.css'
-import  Counter from './Counter.jsx'
+import Counter from './Counter.jsx'
 import Calculator from './Calculator.jsx'
 import TaskManager from './TaskManager.jsx'
 import CoinFlipper from './Coinflipper.jsx'
@@ -9,73 +9,215 @@ import RollingDice from './RollingDice.jsx'
 import QRCodeGenerator from './QRCodeGenerator.jsx'
 import RandomQuote from './RandomQoute.jsx'
 
-
 function App() {
-  const [count, setCount] = useState(0)
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Dashboard />} />
+          <Route
+            path="counter"
+            element={
+              <Page title="Counter">
+                <Counter />
+              </Page>
+            }
+          />
+          <Route
+            path="calculator"
+            element={
+              <Page title="Calculator">
+                <Calculator />
+              </Page>
+            }
+          />
+          <Route
+            path="tasks"
+            element={
+              <Page title="Task Manager">
+                <TaskManager />
+              </Page>
+            }
+          />
+          <Route
+            path="coin-flip"
+            element={
+              <Page title="Coin Flipper">
+                <CoinFlipper />
+              </Page>
+            }
+          />
+          <Route
+            path="dice"
+            element={
+              <Page title="Rolling Dice">
+                <RollingDice />
+              </Page>
+            }
+          />
+          <Route
+            path="qr-code"
+            element={
+              <Page title="QR Code Generator">
+                <QRCodeGenerator />
+              </Page>
+            }
+          />
+          <Route
+            path="random-quote"
+            element={
+              <Page title="Random Quote">
+                <RandomQuote />
+              </Page>
+            }
+          />
+          <Route
+            path="tic-tac-toe"
+            element={
+              <Page title="Tic Tac Toe">
+                <Board />
+              </Page>
+            }
+          />
+          <Route
+            path="todo"
+            element={
+              <Page title="Todo List">
+                <TodoApp />
+              </Page>
+            }
+          />
+          <Route
+            path="adjustable-button"
+            element={
+              <Page title="Adjustable Button">
+                <AdjustableSizedButton />
+              </Page>
+            }
+          />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  )
+}
+
+function Layout() {
+  return (
+    <div className="app">
+      <header className="app-header">
+        <div>
+          <h1 className="app-title">React Playground</h1>
+          <p className="app-subtitle">Select a mini app to explore from the dashboard.</p>
+        </div>
+        <nav className="app-nav">
+          <Link className="nav-link" to="/">
+            Dashboard
+          </Link>
+        </nav>
+      </header>
+
+      <main className="app-main">
+        <Outlet />
+      </main>
+
+      <footer className="app-footer">
+        <span>Built with React + Vite</span>
+      </footer>
+    </div>
+  )
+}
+
+function Page({ title, children }) {
+  return (
+    <div className="page">
+      <div className="page-header">
+        <div>
+          <h2>{title}</h2>
+        </div>
+        <Link className="button secondary" to="/">
+          ← Back to dashboard
+        </Link>
+      </div>
+
+      <div className="page-body">{children}</div>
+    </div>
+  )
+}
+
+function Dashboard() {
+  const cards = [
+    {
+      to: '/counter',
+      title: 'Counter',
+      description: 'Increment, decrement, and reset a counter.',
+    },
+    {
+      to: '/calculator',
+      title: 'Calculator',
+      description: 'A simple calculator for basic operations.',
+    },
+    {
+      to: '/tasks',
+      title: 'Task Manager',
+      description: 'Add, view, and manage your tasks.',
+    },
+    {
+      to: '/coin-flip',
+      title: 'Coin Flipper',
+      description: 'Flip a coin and see heads or tails.',
+    },
+    {
+      to: '/dice',
+      title: 'Rolling Dice',
+      description: 'Roll dice and see the result.',
+    },
+    {
+      to: '/qr-code',
+      title: 'QR Code Generator',
+      description: 'Generate a QR code from text.',
+    },
+    {
+      to: '/random-quote',
+      title: 'Random Quote',
+      description: 'Show a random quote each time.',
+    },
+    {
+      to: '/tic-tac-toe',
+      title: 'Tic Tac Toe',
+      description: 'Play a simple tic-tac-toe game.',
+    },
+    {
+      to: '/todo',
+      title: 'Todo List',
+      description: 'Create and view a todo list.',
+    },
+    {
+      to: '/adjustable-button',
+      title: 'Adjustable Button',
+      description: 'Grow and shrink a button interactively.',
+    },
+  ]
 
   return (
-    <>
+    <div className="dashboard">
+      <div className="dashboard-header">
+        <h2>Dashboard</h2>
+        <p>Select a card to open that mini app page.</p>
+      </div>
 
-    <div><TaskManager /></div>
-
-    <div>
-      <h1>React Logo</h1>
-      <img src={reactLogo} className="logo react" alt="React logo" />
+      <div className="dashboard-grid">
+        {cards.map((card) => (
+          <Link key={card.to} to={card.to} className="card">
+            <div className="card-content">
+              <h3>{card.title}</h3>
+              <p>{card.description}</p>
+            </div>
+            <span className="card-arrow">→</span>
+          </Link>
+        ))}
+      </div>
     </div>
-    
-
-    <div className="BoxedApp">
-      <h1>Count Button</h1> 
-      <button disabled={count >= 6} onClick={() => setCount((count) => count + 1)}>
-        Increment
-        
-      </button>
-      <p>Count is: {count}</p>
-    </div>
-      
-    
-    <div className="BoxedApp">
-      <h1>Tic Tac Toe Game</h1>
-      <Board />
-    </div>
-
-    <div>
-      <h1>Todo App</h1>
-      <TodoApp />
-    </div>
-    
-    <div>
-      <h1>Adjustable Sized Button</h1>
-      <AdjustableSizedButton />
-    </div>
-
-    <div>
-      <h1>Checkbox for Todo</h1>
-      {checkboxForTodo("Learn React")}
-      {checkboxForTodo("Build a Todo App")}
-    </div>
-
-    
-    <div>
-      <Counter />
-    </div>
-
-    <div>
-      <Calculator/>
-    </div>
-    
-    <div>
-      <CoinFlipper />
-    </div>
-
-    <div><RollingDice /></div>
-
-    <div><QRCodeGenerator /></div>
-
-    <div><RandomQuote /></div>
-    </> 
-
-
   )
 }
 //tic tac toe game 3x3 grid

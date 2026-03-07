@@ -42,9 +42,18 @@
 } */
 
 
+html,
+body {
+  height: 100%;
+}
+
 body {
   font-family: Arial, sans-serif;
-  margin: 20px;
+  margin: 0;
+}
+
+#root {
+  height: 100%;
 }
 .game {
   display: flex;
@@ -201,4 +210,238 @@ button:hover {
 button:disabled {
   background: gray;
   cursor: not-allowed;
+}
+
+/* Layout + Dashboard styles */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  padding: 18px 24px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  color: white;
+}
+
+.app-title {
+  margin: 0;
+  font-size: 1.65rem;
+}
+
+.app-subtitle {
+  margin: 4px 0 0;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+.app-nav {
+  display: flex;
+  gap: 12px;
+}
+
+.nav-link {
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 160ms ease;
+}
+
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.app-main {
+  flex: 1;
+  padding: 28px 24px 40px;
+  max-width: 1080px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.app-footer {
+  padding: 16px 24px;
+  font-size: 0.9rem;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.55);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.page-body {
+  padding: 18px;
+  border-radius: 14px;
+  background: rgba(245, 245, 245, 0.85);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+}
+
+.button.secondary {
+  padding: 10px 16px;
+  background: rgba(0, 0, 0, 0.08);
+  color: rgba(0, 0, 0, 0.8);
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.button.secondary:hover {
+  background: rgba(0, 0, 0, 0.14);
+}
+
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.dashboard-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-width: 720px;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 18px;
+  border-radius: 14px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+}
+
+.card-content h3 {
+  margin: 0 0 6px;
+  font-size: 1.15rem;
+}
+
+.card-content p {
+  margin: 0;
+  opacity: 0.8;
+  line-height: 1.3;
+}
+
+.card-arrow {
+  font-size: 1.3rem;
+  opacity: 0.65;
+}
+
+.adjustable {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: center;
+}
+
+.adjustable-controls {
+  display: flex;
+  gap: 12px;
+}
+
+.adjustable-button {
+  border-radius: 14px;
+}
+
+/* Responsive tweaks */
+@media (max-width: 900px) {
+  .app-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .app-nav {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .app-main {
+    padding: 20px 16px 32px;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    margin: 12px;
+  }
+
+  .app-header {
+    padding: 16px 14px;
+  }
+
+  .app-title {
+    font-size: 1.4rem;
+  }
+
+  .app-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .card-arrow {
+    align-self: flex-end;
+    margin-top: 10px;
+  }
+
+  .page-body {
+    padding: 14px;
+  }
+
+  .todoApp {
+    margin: 40px auto;
+    padding: 40px 20px;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  button + button {
+    margin-top: 10px;
+  }
 }
