@@ -8,6 +8,7 @@ import CoinFlipper from './Coinflipper.jsx'
 import RollingDice from './RollingDice.jsx'
 import QRCodeGenerator from './QRCodeGenerator.jsx'
 import RandomQuote from './RandomQoute.jsx'
+import Wordle from './Wordle.jsx'
 
 function App() {
   return (
@@ -68,6 +69,14 @@ function App() {
             element={
               <Page title="Random Quote">
                 <RandomQuote />
+              </Page>
+            }
+          />
+          <Route
+            path="wordle"
+            element={
+              <Page title="Wordle">
+                <Wordle />
               </Page>
             }
           />
@@ -181,6 +190,11 @@ function Dashboard() {
       to: '/random-quote',
       title: 'Random Quote',
       description: 'Show a random quote each time.',
+    },
+    {
+      to: '/wordle',
+      title: 'Wordle',
+      description: 'Guess the hidden 5-letter word in 6 tries.',
     },
     {
       to: '/tic-tac-toe',
