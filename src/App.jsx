@@ -138,8 +138,10 @@ function Layout() {
 }
 
 function Page({ title, children }) {
+  const slug = title.toLowerCase().replace(/\s+/g, '-')
+
   return (
-    <div className="page">
+    <div className={`page page--${slug}`}>
       <div className="page-header">
         <div>
           <h2>{title}</h2>
@@ -160,41 +162,49 @@ function Dashboard() {
       to: '/counter',
       title: 'Counter',
       description: 'Increment, decrement, and reset a counter.',
+      bg: 'linear-gradient(135deg, #ffeadb 0%, #ffd7d9 100%)',
     },
     {
       to: '/calculator',
       title: 'Calculator',
       description: 'A simple calculator for basic operations.',
+      bg: 'linear-gradient(135deg, #c1ede8 0%, #a2d9ff 100%)',
     },
     {
       to: '/tasks',
       title: 'Task Manager',
       description: 'Add, view, and manage your tasks.',
+      bg: 'linear-gradient(135deg, #f3f7d9 0%, #d3f2ff 100%)',
     },
     {
       to: '/coin-flip',
       title: 'Coin Flipper',
       description: 'Flip a coin and see heads or tails.',
+      bg: 'linear-gradient(135deg, #fff6d6 0%, #ffe2a1 100%)',
     },
     {
       to: '/dice',
       title: 'Rolling Dice',
       description: 'Roll dice and see the result.',
+      bg: 'linear-gradient(135deg, #ddf1ff 0%, #b7dfff 100%)',
     },
     {
       to: '/qr-code',
       title: 'QR Code Generator',
       description: 'Generate a QR code from text.',
+      bg: 'linear-gradient(135deg, #e7d7ff 0%, #ffccf6 100%)',
     },
     {
       to: '/random-quote',
       title: 'Random Quote',
       description: 'Show a random quote each time.',
+      bg: 'linear-gradient(135deg, #d6f7ff 0%, #cce4ff 100%)',
     },
     {
       to: '/wordle',
       title: 'Wordle',
       description: 'Guess the hidden 5-letter word in 6 tries.',
+      bg: 'linear-gradient(135deg, #e8fbe8 0%, #c7f0d9 100%)',
     },
     {
       to: '/tic-tac-toe',
@@ -222,7 +232,7 @@ function Dashboard() {
 
       <div className="dashboard-grid">
         {cards.map((card) => (
-          <Link key={card.to} to={card.to} className="card">
+          <Link key={card.to} to={card.to} className="card" style={{ '--card-bg': card.bg }}>
             <div className="card-content">
               <h3>{card.title}</h3>
               <p>{card.description}</p>
