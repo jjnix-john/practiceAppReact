@@ -1,5 +1,14 @@
 import { useState } from 'react'
-import { BrowserRouter, Routes, Route, Link, Outlet, Navigate } from 'react-router-dom'
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Link,
+  Outlet,
+  Navigate,
+  useNavigate,
+  useLocation,
+} from 'react-router-dom'
 import './App.css'
 import Counter from './Counter.jsx'
 import Calculator from './Calculator.jsx'
@@ -9,12 +18,23 @@ import RollingDice from './RollingDice.jsx'
 import QRCodeGenerator from './QRCodeGenerator.jsx'
 import RandomQuote from './RandomQoute.jsx'
 import Wordle from './Wordle.jsx'
+import CrosswordPuzzle from './CrosswordPuzzle.jsx'
+import Login from './Login.jsx'
+import { auth } from './auth'
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path="/login" element={<Login />} />
+        <Route
+          path="/"
+          element={
+            <RequireAuth>
+              <Layout />
+            </RequireAuth>
+          }
+        >
           <Route index element={<Dashboard />} />
           <Route
             path="counter"
@@ -81,6 +101,14 @@ function App() {
             }
           />
           <Route
+            path="crossword"
+            element={
+              <Page title="Crossword Puzzle">
+                <CrosswordPuzzle />
+              </Page>
+            }
+          />
+          <Route
             path="tic-tac-toe"
             element={
               <Page title="Tic Tac Toe">
@@ -111,7 +139,25 @@ function App() {
   )
 }
 
+function RequireAuth({ children }) {
+  const location = useLocation()
+
+  if (!auth.isLoggedIn()) {
+    return <Navigate to="/login" state={{ from: location }} replace />
+  }
+
+  return children
+}
+
 function Layout() {
+  const navigate = useNavigate()
+  const username = auth.getUsername()
+
+  function handleLogout() {
+    auth.logout()
+    navigate('/login', { replace: true })
+  }
+
   return (
     <div className="app">
       <header className="app-header">
@@ -123,6 +169,14 @@ function Layout() {
           <Link className="nav-link" to="/">
             Dashboard
           </Link>
+          {username ? (
+            <div className="nav-actions">
+              <span className="nav-greeting">Hi, {username}</span>
+              <button className="button secondary" onClick={handleLogout}>
+                Logout
+              </button>
+            </div>
+          ) : null}
         </nav>
       </header>
 
@@ -205,6 +259,12 @@ function Dashboard() {
       title: 'Wordle',
       description: 'Guess the hidden 5-letter word in 6 tries.',
       bg: 'linear-gradient(135deg, #e8fbe8 0%, #c7f0d9 100%)',
+    },
+    {
+      to: '/crossword',
+      title: 'Crossword Puzzle',
+      description: 'Fill in the grid using crossword clues.',
+      bg: 'linear-gradient(135deg, #fff4d6 0%, #ffe8a1 100%)',
     },
     {
       to: '/tic-tac-toe',
