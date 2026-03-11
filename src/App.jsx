@@ -17,6 +17,7 @@ import CoinFlipper from './Coinflipper.jsx'
 import RollingDice from './RollingDice.jsx'
 import QRCodeGenerator from './QRCodeGenerator.jsx'
 import RandomQuote from './RandomQoute.jsx'
+import AIChatbot from './AIChatbot.jsx'
 import Wordle from './Wordle.jsx'
 import CrosswordPuzzle from './CrosswordPuzzle.jsx'
 import Login from './Login.jsx'
@@ -89,6 +90,14 @@ function App() {
             element={
               <Page title="Random Quote">
                 <RandomQuote />
+              </Page>
+            }
+          />
+          <Route
+            path="ai-chat"
+            element={
+              <Page title="AI Chatbot">
+                <AIChatbot />
               </Page>
             }
           />
@@ -253,6 +262,12 @@ function Dashboard() {
       title: 'Random Quote',
       description: 'Show a random quote each time.',
       bg: 'linear-gradient(135deg, #d6f7ff 0%, #cce4ff 100%)',
+    },
+    {
+      to: '/ai-chat',
+      title: 'AI Chatbot',
+      description: 'Chat with an AI using the OpenRouter API.',
+      bg: 'linear-gradient(135deg, #f5f0ff 0%, #e8e3ff 100%)',
     },
     {
       to: '/wordle',
