@@ -17,7 +17,7 @@ Note: This will impact Vite dev & build performances.
 
 This project includes a small local proxy server that forwards requests to the OpenRouter API (so you don't have to expose your API key in the browser).
 
-1) Copy `server/.env.example` to `server/.env` and set your OpenRouter API key:
+1. Copy `server/.env.example` to `server/.env` and set your OpenRouter API key:
 
 ```sh
 cd server
@@ -25,13 +25,13 @@ cp .env.example .env
 # Edit .env and add your key
 ```
 
-2) Start the server in one terminal:
+2. Start the server in one terminal:
 
 ```sh
 npm run server
 ```
 
-3) Start the Vite dev server in another terminal:
+3. Start the Vite dev server in another terminal:
 
 ```sh
 npm run dev

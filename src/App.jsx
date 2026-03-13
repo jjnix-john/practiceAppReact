@@ -21,6 +21,7 @@ import AIChatbot from './AIChatbot.jsx'
 import Wordle from './Wordle.jsx'
 import CrosswordPuzzle from './CrosswordPuzzle.jsx'
 import Login from './Login.jsx'
+import Pacman from './Pacman.jsx'
 import { auth } from './auth'
 
 function App() {
@@ -138,6 +139,14 @@ function App() {
             element={
               <Page title="Adjustable Button">
                 <AdjustableSizedButton />
+              </Page>
+            }
+          />
+          <Route
+            path="pacman"
+            element={
+              <Page title="Pacman">
+                <Pacman />
               </Page>
             }
           />
@@ -295,6 +304,12 @@ function Dashboard() {
       to: '/adjustable-button',
       title: 'Adjustable Button',
       description: 'Grow and shrink a button interactively.',
+    },
+    {
+      to: '/pacman',
+      title: 'Pacman',
+      description: 'Play the classic Pacman game.',
+      bg: 'linear-gradient(135deg, #ffff00 0%, #ffcc00 100%)',
     },
   ]
 
