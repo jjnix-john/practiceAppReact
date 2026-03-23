@@ -23,6 +23,7 @@ import CrosswordPuzzle from './CrosswordPuzzle.jsx'
 import Login from './Login.jsx'
 import Pacman from './Pacman.jsx'
 import { auth } from './auth'
+import GuessTheWord from './GuessTheWord.jsx'
 
 function App() {
   return (
